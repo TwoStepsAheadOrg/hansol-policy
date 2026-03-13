@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>계정 삭제 요청 - 한솔MS 충전</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans KR', sans-serif;
+    background: #F8F9FA; color: #1A1A2E; line-height: 1.7; padding: 20px;
+  }
+  .container { max-width: 560px; margin: 0 auto; padding-top: 40px; }
+  .card {
+    background: #fff; border-radius: 16px; padding: 32px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  h1 { font-size: 22px; font-weight: 800; text-align: center; margin-bottom: 8px; }
+  .subtitle {
+    text-align: center; font-size: 14px; color: #8E8E93; margin-bottom: 28px;
+  }
+  .info {
+    background: #F2F2F7; border-radius: 12px; padding: 16px; margin-bottom: 24px;
+    font-size: 14px; color: #3A3A4A; line-height: 1.8;
+  }
+  .info strong { color: #1A1A2E; }
+  label {
+    display: block; font-size: 13px; font-weight: 600;
+    color: #3A3A4A; margin-bottom: 6px; margin-top: 16px;
+  }
+  input, textarea {
+    width: 100%; padding: 12px 14px; border: 1px solid #E5E5EA;
+    border-radius: 10px; font-size: 15px; color: #1A1A2E;
+    background: #FAFAFA; outline: none; transition: border-color 0.2s;
+  }
+  input:focus, textarea:focus { border-color: #00A896; }
+  textarea { resize: vertical; min-height: 80px; }
+  .btn {
+    display: block; width: 100%; margin-top: 24px; padding: 14px;
+    background: #EF4444; color: #fff; font-size: 16px; font-weight: 700;
+    border: none; border-radius: 12px; cursor: pointer; transition: background 0.2s;
+  }
+  .btn:hover { background: #DC2626; }
+  .notice {
+    margin-top: 20px; font-size: 12px; color: #8E8E93; line-height: 1.7;
+  }
+  .notice ul { padding-left: 16px; margin-top: 6px; }
+  .success {
+    display: none; text-align: center; padding: 40px 20px;
+  }
+  .success .check { font-size: 48px; margin-bottom: 16px; }
+  .success h2 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+  .success p { font-size: 14px; color: #8E8E93; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="card">
+    <div id="form-section">
+      <h1>계정 삭제 요청</h1>
+      <p class="subtitle">한솔MS 충전 앱 계정 및 관련 데이터 삭제</p>
+
+      <div class="info">
+        계정을 삭제하면 다음 데이터가 영구적으로 삭제됩니다:
+        <br><br>
+        <strong>• 계정 정보</strong> (이름, 전화번호, 이메일)<br>
+        <strong>• 충전 이력</strong> 및 결제 기록<br>
+        <strong>• 등록된 차량 정보</strong><br>
+        <strong>• 결제 카드 정보</strong>
+      </div>
+
+      <form id="deleteForm" onsubmit="handleSubmit(event)">
+        <label for="name">이름</label>
+        <input type="text" id="name" name="name" placeholder="가입 시 등록한 이름" required>
+
+        <label for="phone">가입 전화번호</label>
+        <input type="tel" id="phone" name="phone" placeholder="010-0000-0000" required>
+
+        <label for="loginId">로그인 ID</label>
+        <input type="text" id="loginId" name="loginId" placeholder="가입 시 사용한 ID" required>
+
+        <label for="reason">삭제 사유 (선택)</label>
+        <textarea id="reason" name="reason" placeholder="삭제 사유를 입력해주세요 (선택사항)"></textarea>
+
+        <button type="submit" class="btn">계정 삭제 요청</button>
+      </form>
+
+      <div class="notice">
+        <strong>안내사항</strong>
+        <ul>
+          <li>삭제 요청 접수 후 영업일 기준 7일 이내에 처리됩니다.</li>
+          <li>관계 법령에 따라 일부 데이터는 법정 보존 기간 동안 보관될 수 있습니다.</li>
+          <li>삭제 완료 시 등록된 연락처로 안내드립니다.</li>
+          <li>문의: 한솔MS 고객센터</li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="success-section" class="success">
+      <div class="check">✓</div>
+      <h2>삭제 요청이 접수되었습니다</h2>
+      <p>영업일 기준 7일 이내에 처리되며,<br>완료 시 등록된 연락처로 안내드립니다.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+function handleSubmit(e) {
+  e.preventDefault();
+  document.getElementById('form-section').style.display = 'none';
+  document.getElementById('success-section').style.display = 'block';
+}
+</script>
+</body>
+</html>
